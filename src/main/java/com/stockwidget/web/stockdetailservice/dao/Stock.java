@@ -1,11 +1,30 @@
 package com.stockwidget.web.stockdetailservice.dao;
 
+import java.util.Date;
+
 import org.springframework.data.annotation.Id;
 
 public class Stock {
 
 	@Id
 	private long id;
+	private String name;
+	private String unitValue;
+	private String previousVal;
+	private Date tschange;
+	
+	public String getPreviousVal() {
+		return previousVal;
+	}
+	public void setPreviousVal(String previousVal) {
+		this.previousVal = previousVal;
+	}
+	public Date getTschange() {
+		return tschange;
+	}
+	public void setTschange(Date tschange) {
+		this.tschange = tschange;
+	}
 	
 	public long getId() {
 		return id;
@@ -13,8 +32,6 @@ public class Stock {
 	public void setId(long id) {
 		this.id = id;
 	}
-	private String name;
-	private String unitValue;
 	
 	public String getName() {
 		return name;

@@ -11,4 +11,7 @@ public interface StockDetailRepository extends Repository<Stock, String> {
 	List<Stock> findAll();
 
 	Stock save(Stock stock);
+	
+	void delete(Stock stock);
+	
 }

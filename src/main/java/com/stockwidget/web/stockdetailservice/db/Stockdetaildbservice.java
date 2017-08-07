@@ -25,5 +25,9 @@ public class Stockdetaildbservice {
 	public void add(Stock stock) {
 		detailRepository.save(stock);
 	}
+	
+	public void delete(Stock stock){
+		detailRepository.delete(stock);
+	}
 
 }

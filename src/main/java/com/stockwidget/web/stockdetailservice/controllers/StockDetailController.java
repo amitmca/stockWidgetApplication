@@ -1,5 +1,9 @@
 package com.stockwidget.web.stockdetailservice.controllers;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -22,7 +26,7 @@ class StockDetailController {
 	private NextSequenceService serquenceService;
 
 	@Autowired
-	public StockDetailController(Stockdetaildbservice stockdetaildbservice,NextSequenceService serquenceService) {
+	public StockDetailController(Stockdetaildbservice stockdetaildbservice, NextSequenceService serquenceService) {
 		this.stockdetaildbservice = stockdetaildbservice;
 		this.serquenceService = serquenceService;
 	}
@@ -38,13 +42,26 @@ class StockDetailController {
 	}
 
 	@RequestMapping(value = "/isvalidstock", method = RequestMethod.GET, produces = "application/json")
-	public Stock isValidStock(@RequestParam String stockName) {
+	public Stock isValidStock(@RequestParam String stockName) throws ParseException {
 
 		Stock stock = new Stock();
 		stock.setId(serquenceService.getNextSequence("hosting"));
 		stock.setName(stockName);
-		stock.setUnitValue("0.0");
+		stock.setUnitValue("0.00");
+		stock.setPreviousVal("2.30");
+
+		Calendar calendar = Calendar.getInstance();
+		SimpleDateFormat sdf = new SimpleDateFormat("dd-M-yyyy hh:mm:ss");
+		String format = sdf.format(calendar.getTime());
+		Date date = sdf.parse(format);
+		stock.setTschange(date);
+		
 		return stock;
+	}
+
+	@RequestMapping(value = "/deletestock", method = RequestMethod.POST, produces = "application/json")
+	public void delete(@RequestBody @Valid Stock stock) {
+		stockdetaildbservice.delete(stock);
 	}
 
 }

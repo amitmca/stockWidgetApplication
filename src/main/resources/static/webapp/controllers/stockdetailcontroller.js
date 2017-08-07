@@ -29,6 +29,9 @@ app.controller("myCtrl", function($scope, $http) {
 	}
 	$scope.removeItem = function(x) {
 		$scope.errortext = "";
+	
+		$http.post('/deletestock',$scope.products[x]);	
+		
 		$scope.products.splice(x, 1);
 	}
 });
