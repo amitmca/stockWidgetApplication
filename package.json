@@ -1,0 +1,9 @@
+{
+  "name": "stockservice",
+  "version": "0.0.0",
+  "description": "Stock widget details",
+  "private": true,
+  "devDependencies": {
+    "bower": "1.7.9"
+  }
+}
