@@ -12,7 +12,21 @@ public class Stock {
 	private String unitValue;
 	private String previousVal;
 	private Date tschange;
+	private String growthRate;
+	private String growthStatus;
 	
+	public String getGrowthRate() {
+		return growthRate;
+	}
+	public void setGrowthRate(String growthRate) {
+		this.growthRate = growthRate;
+	}
+	public String getGrowthStatus() {
+		return growthStatus;
+	}
+	public void setGrowthStatus(String growthStatus) {
+		this.growthStatus = growthStatus;
+	}
 	public String getPreviousVal() {
 		return previousVal;
 	}

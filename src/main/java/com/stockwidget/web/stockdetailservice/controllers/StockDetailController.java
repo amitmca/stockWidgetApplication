@@ -49,6 +49,8 @@ class StockDetailController {
 		stock.setName(stockName);
 		stock.setUnitValue("0.00");
 		stock.setPreviousVal("2.30");
+		stock.setGrowthRate("0.2");
+		stock.setGrowthStatus("Up");
 
 		Calendar calendar = Calendar.getInstance();
 		SimpleDateFormat sdf = new SimpleDateFormat("dd-M-yyyy hh:mm:ss");
