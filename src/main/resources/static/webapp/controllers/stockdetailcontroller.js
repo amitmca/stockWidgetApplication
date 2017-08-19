@@ -1,10 +1,18 @@
 var app = angular.module("myStockList");
-app.controller("myCtrl", function($scope, $http) {
+app.controller("myCtrl", function($scope, $http, $interval) {
 
+	$scope.reload = function(){
 	$http.get("/stockdetail").then(function(response) {
 		$scope.products = response.data;
 	});
-
+	};
+	
+	$interval(function(){
+        $scope.reload();
+      },1000);
+    
+    $scope.reload();
+	
 	$scope.addItem = function() {
 		$scope.errortext = "";
 		if (!$scope.addMe) {
